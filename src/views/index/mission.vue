@@ -1,37 +1,46 @@
 <template>
-	<div class="index-container">
-		<div class="header-cont">
-            <div class="header-cont-number">{{data.integral || 0}}</div>
-            <div class="header-cont-text">我的积分</div>
-		</div>
-        <div class="index-title">做任务领红包</div>
-		<div class="index-content">
-            <!-- <div class="index-content-title"></div> -->
-			<!-- <div style="padding: 0 15px;"> -->
-			<!-- <div style="height:62px;"></div> -->
-			<!--<p class="title">任务中心</p>-->
-			<div class="task-list-box">
-                <div class="task-list-item">
-                    <div class="task-list-item-left">
-                        <div class="item-icon icon-1"></div>
-                        <div class="item-title-box">
-                            <div class="item-title">每日签到</div>
-                            <div class="item-sub-title">领取2元红包</div>
-                        </div>
-                    </div>
-                    <div class="task-list-item-right" :class="{'active-btn': mission.qiandao_status}" @click="checkin2()">{{mission.qiandao_status ? '已完成' : '做任务'}}</div>
-                </div>
-				<div class="task-list-item">
-					<div class="task-list-item-left">
-                        <div class="item-icon icon-2"></div>
-						<div class="item-title-box">
-                            <div class="item-title">邀请好友</div>
-                            <div class="item-sub-title">互得现金红包</div>
-                        </div>
-					</div>
-					<div class="task-list-item-right" :class="{'active-btn': mission.invest_status == true}" @click="handleTaskListItem(1)">{{mission.invest_status == true ? '已完成' : '做任务'}}</div>
-				</div>
-				<!--
+  <div class="index-container">
+    <div class="header-cont">
+      <div class="header-cont-number">{{ data.integral || 0 }}</div>
+      <div class="header-cont-text">当前积分</div>
+    </div>
+    <div class="task-list-box">
+
+      <div class="task-list-item">
+        <div class="task-list-item-left">
+          <div class="item-icon icon-1"></div>
+          <div class="item-title-box">
+            <div class="item-title">每日签到</div>
+            <div class="item-sub-title">领取2元红包</div>
+          </div>
+        </div>
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.qiandao_status }"
+          @click="checkin2()"
+        >
+          {{ mission.qiandao_status ? "已完成" : "做任务" }}
+        </div>
+      </div>
+
+      <div class="task-list-item">
+        <div class="task-list-item-left">
+          <div class="item-icon icon-2"></div>
+          <div class="item-title-box">
+            <div class="item-title">邀请好友</div>
+            <div class="item-sub-title">邀请好友投资成功奖励</div>
+          </div>
+        </div>
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.invest_status == true }"
+          @click="handleTaskListItem(1)"
+        >
+          {{ mission.invest_status == true ? "已完成" : "做任务" }}
+        </div>
+      </div>
+
+      <!--
 				<div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div>
 				<div class="task-list-item">
 					<div class="task-list-item-left">
@@ -63,9 +72,9 @@
 					</div>
 				</div>
 				-->
-				<!-- <div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div> -->
+      <!-- <div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div> -->
 
-				<!-- <div class="task-list-item">
+      <!-- <div class="task-list-item">
 					<div class="task-list-item-left">
                         <div class="item-icon icon-3"></div>
                         <div class="item-title-box">
@@ -76,18 +85,24 @@
 					<div class="task-list-item-right" :class="{'active-btn': mission.yue_bao_status == true}" @click="handleTaskListItem(2)">{{mission.yue_bao_status == true ? '已完成' : '做任务'}}</div>
 				</div> -->
 
-				<div class="task-list-item">
-					<div class="task-list-item-left">
-                        <div class="item-icon icon-4"></div>
-                        <div class="item-title-box">
-                            <div class="item-title">新人认证</div>
-                            <div class="item-sub-title">领取5元红包</div>
-                        </div>
-					</div>
-					<div class="task-list-item-right" :class="{'active-btn': mission.auth_status == true}" @click="handleTaskListItem(3)">{{mission.auth_status == true ? '已完成' : '做任务'}}</div>
-				</div>
+      <div class="task-list-item">
+        <div class="task-list-item-left">
+          <div class="item-icon icon-4"></div>
+          <div class="item-title-box">
+            <div class="item-title">新人认证红包</div>
+            <div class="item-sub-title">完成实名认证后领取</div>
+          </div>
+        </div>
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.auth_status == true }"
+          @click="handleTaskListItem(3)"
+        >
+          {{ mission.auth_status == true ? "已完成" : "做任务" }}
+        </div>
+      </div>
 
-				<!-- <div class="task-list-item">
+      <!-- <div class="task-list-item">
 					<div class="task-list-item-left">
                         <div class="item-icon icon-5"></div>
                         <div class="item-title-box">
@@ -98,17 +113,24 @@
 					<div class="task-list-item-right" @click="handleTaskListItem(4)">做任务</div>
 				</div> -->
 
-				<div class="task-list-item">
-					<div class="task-list-item-left">
-                        <div class="item-icon icon-6"></div>
-                        <div class="item-title-box">
-                            <div class="item-title">趣味答题</div>
-                            <div class="item-sub-title">海量红包疯狂送</div>
-                        </div>
-					</div>
-					<div class="task-list-item-right" :class="{'active-btn': mission.answer_status}" @click="handleTaskListItem(7)">{{mission.answer_status ? '已完成' : '做任务'}}</div>
-				</div>
-				<!--
+      <div class="task-list-item">
+        <div class="task-list-item-left">
+          <div class="item-icon icon-6"></div>
+          <div class="item-title-box">
+            <div class="item-title">趣味答题</div>
+            <div class="item-sub-title">海量红包疯狂送</div>
+          </div>
+        </div>
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.answer_status }"
+          @click="handleTaskListItem(7)"
+        >
+          {{ mission.answer_status ? "已完成" : "做任务" }}
+        </div>
+      </div>
+      
+      <!--
 				<div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div>
 				<div class="task-list-item">
 					<div class="task-list-item-left">
@@ -125,7 +147,7 @@
 					</div>
 				</div>
 				-->
-				<!-- <div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div>
+      <!-- <div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div>
 				<div class="task-list-item">
 					<div class="task-list-item-left">
 						<div class="left-icon left-icon-five"></div>
@@ -155,61 +177,59 @@
 						<div class="right-btn" :class="{'active-btn': mission.answer_status == true}" @click="handleTaskListItem(6)">{{mission.answer_status == true ? '任务完成' : '去做任务'}}</div>
 					</div>
 				</div> -->
-			</div>
-            <!-- </div> -->
-		</div>
-	</div>
+    </div>
+  </div>
 </template>
 
 <script>
-	import Fetch from '../../utils/fetch';
-	import {Dialog} from 'vant';
-	export default {
-		name: "info",
-		data() {
-			return {
-				data: {},
-				footer_type: 'n1',
-				mission:{},
-				signInList: [
-					{id: 1, name: '周一', isSignIn: true},
-					{id: 2, name: '周二', isSignIn: true},
-					{id: 3, name: '周三', isSignIn: true},
-					{id: 4, name: '周四', isSignIn: false},
-					{id: 5, name: '周五', isSignIn: false},
-					{id: 6, name: '周六', isSignIn: false},
-					{id: 7, name: '周日', isSignIn: false},
-				],
-			};
-		},
-		created() {
-			// if (this.$parent.getFooterType() === 'n2') {
-			// 	this.$router.replace('/user');
-			// }
-			this.$parent.footer(true, 'mission');
+import Fetch from "../../utils/fetch";
+import { Dialog } from "vant";
+export default {
+  name: "info",
+  data() {
+    return {
+      data: {},
+      footer_type: "n1",
+      mission: {},
+      signInList: [
+        { id: 1, name: "周一", isSignIn: true },
+        { id: 2, name: "周二", isSignIn: true },
+        { id: 3, name: "周三", isSignIn: true },
+        { id: 4, name: "周四", isSignIn: false },
+        { id: 5, name: "周五", isSignIn: false },
+        { id: 6, name: "周六", isSignIn: false },
+        { id: 7, name: "周日", isSignIn: false },
+      ],
+    };
+  },
+  created() {
+    // if (this.$parent.getFooterType() === 'n2') {
+    // 	this.$router.replace('/user');
+    // }
+    this.$parent.footer(true, "mission");
 
-			var type = localStorage.getItem('footer');
-			if (type) {
-				this.footer_type = type;
-			}
-		},
-		mounted() {
-			document.body.scrollTop = 0;
-			document.documentElement.scrollTop = 0;
-			this.start();
-		},
-		methods: {
-			dati() {
-				Fetch('/index/getAnswer').then((res) => {
-					this.$router.replace("/exam")
-				})
-			},
-			checkin2() {
-				this.$router.push("/qiandao")
+    var type = localStorage.getItem("footer");
+    if (type) {
+      this.footer_type = type;
+    }
+  },
+  mounted() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    this.start();
+  },
+  methods: {
+    dati() {
+      Fetch("/index/getAnswer").then((res) => {
+        this.$router.replace("/exam");
+      });
+    },
+    checkin2() {
+      this.$router.push("/qiandao");
 
-				return
-				Fetch('/user/sign').then((res) => {
-					/* var u = navigator.userAgent;
+      return;
+      Fetch("/user/sign").then((res) => {
+        /* var u = navigator.userAgent;
 					if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
 					  this.sign_money = res.data.reward;
 					  this.new_sign_ok = true;
@@ -238,87 +258,87 @@
 					  	});
 					  }
 					} */
-					if(res.data.coss == 1){
-								Dialog.alert({
-								    title: '提示',
-								    message: res.info,
-								    showCancelButton: true,
-								    confirmButtonText: "去认证",
-								}).then(() => {
-								    this.$router.push('/auth');
-								}).catch(() => {
+        if (res.data.coss == 1) {
+          Dialog.alert({
+            title: "提示",
+            message: res.info,
+            showCancelButton: true,
+            confirmButtonText: "去认证",
+          })
+            .then(() => {
+              this.$router.push("/auth");
+            })
+            .catch(() => {});
+        } else {
+          this.sign_money = res.data.reward;
+          this.new_sign_ok = true;
+          this.$notify({
+            background: "#07c160",
+            message: "签到成功：已获得现金2元和8积分！",
+          });
+        }
+      });
+    },
+    start() {
+      setTimeout(() => {
+        var element = document.getElementById("app");
+        element.scrollIntoView();
+      }, 0);
+      Fetch("/user/info").then((res) => {
+        this.data = res.data;
+      });
 
-								})
-					}else{
-						this.sign_money = res.data.reward;
-						this.new_sign_ok = true;
-						this.$notify({
-							background: '#07c160',
-							message: '签到成功：已获得现金2元和8积分！'
-						});
-					}
-				})
-			},
-			start() {
-				setTimeout(() => {
-					var element = document.getElementById("app");
-					element.scrollIntoView();
-				}, 0)
-				Fetch('/user/info').then(res => {
-					this.data = res.data;
-				})
+      Fetch("/index/getStstusAll").then((res) => {
+        this.mission = res.data;
+        console.log(this.mission);
+      });
+    },
+    logout() {
+      this.$parent.setFooterType("n1");
+      localStorage.removeItem("token");
+      this.$router.replace("/login");
+    },
+    handleTaskListItem(type = 1) {
+      switch (type) {
+        case 1:
+          if (this.mission && this.mission.invest_status == false) {
+            this.$router.push({ name: "share" });
+          }
+          break;
+        case 2:
+          if (this.mission && this.mission.yue_bao_status == false) {
+            this.$router.push({ name: "baoku" });
+          }
+          break;
+        case 3:
+          if (this.mission && this.mission.auth_status == false) {
+            this.$router.push({ name: "auth" });
+          }
+          break;
+        case 4:
+          this.$router.push({ name: "item" });
+          break;
+        case 5:
+          this.$router.push({ name: "start" });
+          break;
+        case 6:
+          this.$router.push({ name: "sport_event" });
+          break;
+        case 7:
+          // this.$router.push({name: 'question_type'});
+          this.$router.push({ name: "wenjuan" });
 
-				Fetch('/index/getStstusAll').then(res =>{
-					this.mission = res.data
-					console.log(this.mission)
-				})
-			},
-			logout() {
-				this.$parent.setFooterType('n1');
-				localStorage.removeItem('token');
-				this.$router.replace('/login');
-			},
-			handleTaskListItem(type = 1) {
-				switch (type) {
-					case 1:
-						if (this.mission && this.mission.invest_status == false) {
-							this.$router.push({name: 'share'});
-						}
-						break;
-					case 2:
-						if (this.mission && this.mission.yue_bao_status == false) {
-							this.$router.push({name: 'baoku'});
-						}
-						break;
-					case 3:
-						if (this.mission && this.mission.auth_status == false) {
-							this.$router.push({name: 'auth'});
-						}
-						break;
-					case 4:
-						this.$router.push({name: 'item'});
-						break;
-					case 5:
-						this.$router.push({name: 'start'});
-						break;
-                    case 6:
-                        this.$router.push({name: 'sport_event'});
-                        break;
-					case 7:
-						// this.$router.push({name: 'question_type'});
-                        this.$router.push({name: 'wenjuan'});
-						
-                        break;
-				}
-			}
-		}
-	};
+          break;
+      }
+    },
+  },
+};
 </script>
 <style>
 #app {
-    height: 100% !important;
+  height: 100% !important;
 }
 </style>
 <style lang="less" scoped>
-	@import "mission";
+@import "mission";
 </style>
