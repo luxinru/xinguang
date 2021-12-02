@@ -187,9 +187,9 @@ export default {
           box-sizing: border-box;
           padding: 1px 8px;
           text-align: center;
-          color: #1975ff;
+          color: rgba(249, 138, 11, 1);
           background-color: #f5f9ff;
-          border: 1px solid #3e8cff;
+          border: 1px solid rgba(251, 101, 1, 1);
           border-radius: 4px;
           margin-left: 9px;
           &.no-certification {

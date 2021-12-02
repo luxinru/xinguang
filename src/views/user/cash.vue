@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <headers title="提现" :money="data.money" />
+    <headers title="提现" :money="data.money"/>
 
     <div class="main">
       <div class="inputBox">
@@ -186,7 +186,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   padding: 0 19px;
-  margin-top: 78px;
+  margin-top: 28px;
   p {
     font-size: 16px;
     font-family: PingFang SC;
@@ -251,6 +251,7 @@ export default {
     flex-direction: column;
     align-items: center;
     overflow: scroll;
+    margin-top: 50px;
     .money-cont {
       width: 100%;
       height: 55px;

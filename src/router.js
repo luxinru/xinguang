@@ -314,14 +314,14 @@ export default new Router({
     {
       path: '/item/:id',
       name: 'details',
-      meta: { title: '投资详情' },
+      meta: { title: '项目详情' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/item/details.vue')
     },
     {
       path: '/item/apply/:id',
       name: 'apply',
-      meta: { title: '立即投标' },
+      meta: { title: '立即投标', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/item/apply.vue')
     },
@@ -373,7 +373,7 @@ export default new Router({
     {
       path: '/touzi/apr/:id',
       name: 'itemapr',
-      meta: { title: '投资详情' },
+      meta: { title: '投资详情', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/itemapr.vue')
     },

@@ -1,215 +1,224 @@
 <template>
-    <div class="project-item-container">
-        <div class="project-img-box">
-            <img :src="investInfo.thumb" alt=""/>
-        </div>
-        <div class="project-item-header">
-            <div class="project-name">{{ investInfo.title }}</div>
-            <div class="project-number" v-if="investInfo.type === 7">期限：{{ investInfo.day }}小时</div>
-			<div class="project-number" v-else>期限：{{ investInfo.day }}天</div>
-        </div>
-        <div class="project-tag-box">
-            <div class="project-tag-item">{{ investInfo.type_name }}</div>
-            <div class="project-tag-item">{{ investInfo.min }}起投</div>
-        </div>
-        <div class="project-info-list">
-            <div class="project-info-list-item">
-                <div class="project-info-list-item-bottom one-bottom">{{ investInfo.rate }} <span>%</span></div>
-                <div class="project-info-list-item-top" v-if="investInfo.type === 7">小时利率</div>
-				<div class="project-info-list-item-top" v-else>日利率</div>
-            </div>
-            <div class="project-info-list-item">
-                <div class="project-info-list-item-bottom">{{ investInfo.apr_money }} <span>元</span></div>
-                <div class="project-info-list-item-top" v-if="investInfo.type === 7">每小时分红</div>
-				<div class="project-info-list-item-top" v-else>每日分红</div>
-            </div>
-            <div class="project-info-list-item">
-                <div class="project-info-list-item-bottom">{{ investInfo.sun_apr_money }} <span>元</span></div>
-                <div class="project-info-list-item-top">总分红</div>
-            </div>
-        </div>
-        <div class="project-progress-warp">
-            <div class="project-progress-box">
-                <div class="project-progress" :style="schedule(investInfo.schedule)"></div>
-            </div>
-            <div class="progress-value">{{investInfo.schedule}}%</div>
-        </div>
-        <div class="project-footer">
-            <div class="project-btn-box">
-                <div class="project-size">项目规模：<span>{{ investInfo.total }}万元</span></div>
-                <div class="project-btn">立即投资</div>
-            </div>
-        </div>
+  <div class="project-item-container">
+    <div class="project-img-box">
+      <img :src="investInfo.thumb" alt="" />
+      <div class="project-size">
+        项目规模：<span>{{ investInfo.total }}万元</span>
+      </div>
     </div>
+    <div class="project-item-header">
+      <div class="project-name">{{ investInfo.title }}</div>
+      <div class="project-btn">立即投资</div>
+    </div>
+    <div class="project-tag-box">
+      <div class="project-tag-item">{{ investInfo.type_name }}</div>
+      <div class="project-tag-item">{{ investInfo.min }}起投</div>
+    </div>
+    <div class="project-info-list">
+      <div class="project-info-list-item">
+        <div class="project-info-list-item-bottom one-bottom">
+          {{ investInfo.rate }} <span>%</span>
+        </div>
+        <div class="project-info-list-item-top" v-if="investInfo.type === 7">
+          小时利率
+        </div>
+        <div class="project-info-list-item-top" v-else>日利率</div>
+      </div>
+      <div class="project-info-list-item">
+        <div class="project-info-list-item-bottom">
+          {{ investInfo.apr_money }} <span>元</span>
+        </div>
+        <div class="project-info-list-item-top" v-if="investInfo.type === 7">
+          每小时分红
+        </div>
+        <div class="project-info-list-item-top" v-else>每日分红</div>
+      </div>
+      <div class="project-info-list-item">
+        <div class="project-info-list-item-bottom">
+          {{ investInfo.sun_apr_money }} <span>元</span>
+        </div>
+        <div class="project-info-list-item-top">总分红</div>
+      </div>
+    </div>
+    <div class="project-progress-warp">
+      <div class="project-progress-box">
+        <div
+          class="project-progress"
+          :style="schedule(investInfo.schedule)"
+        ></div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-    props: {
-        investInfo: {
-            type: Object,
-            default: () => {
-            },
-        },
-        showBtn: {
-            type: Boolean,
-            default: true,
-        },
+  props: {
+    investInfo: {
+      type: Object,
+      default: () => {},
     },
-    methods: {
-        schedule(schedule) {
-            return {
-                width: schedule + '%',
-            };
-        },
+    showBtn: {
+      type: Boolean,
+      default: true,
     },
+  },
+  methods: {
+    schedule(schedule) {
+      return {
+        width: schedule + "%",
+      };
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
 .project-item-container {
-    background: #FFFFFF;
-    box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
-    border-radius: 13px;
-    margin-top: 13px;
+  background: #ffffff;
+  box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
+  border-radius: 13px;
+  margin-top: 13px;
+  overflow: hidden;
+  font-family: PingFang SC;
+  padding: 10px 14px;
+  .project-img-box {
+    position: relative;
+    height: 147px;
+    border-radius: 4px;
     overflow: hidden;
-    font-family: PingFang SC;
-    .project-img-box {
-        height: 164px;
-        // background-color: yellow;
-        // border-radius: 13px;
+    // background-color: yellow;
+    // border-radius: 13px;
 
-        > img {
-            width: 100%;
-            height: 100%;
-            //border-radius: 7px;
-        }
-    }
-    .project-item-header {
-        display: flex;
-        justify-content: space-between;
-        padding: 18px 24px 15px 15px;
-        .project-name {
-            font-size: 15px;
-            font-weight: bold;
-            color: #333B4C;
-            padding-right: 10px;
-            line-height: 20px;
-        }
-
-        .project-number {
-            height: 18px;
-            line-height: 18px;
-            padding: 0 8px;
-            background: #0F79FF;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: 400;
-            color: #FFFFFF;
-        }
+    > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      //border-radius: 7px;
     }
 
-    .project-tag-box {
-        display: flex;
-        align-items: center;
-        padding: 0px 24px 15px 15px;
-
-        .project-tag-item {
-            height: 21px;
-            line-height: 21px;
-            padding: 0 9px;
-            text-align: center;
-            background: #FEF5EB;
-            border-radius: 3px;
-            font-size: 11px;
-            font-weight: 500;
-            color: #E4B879;
-            margin-right: 10px;
-        }
+    .project-size {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #121c32;
+      background: rgba(252, 219, 180, 1);
+      border-radius: 40% 40% 0 0;
+    }
+  }
+  .project-item-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 13px;
+    .project-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: #333b4c;
+      padding-right: 10px;
+      line-height: 20px;
     }
 
-    .project-info-list {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 24px 21px 15px;
-
-        &-item {
-            &-top {
-                font-size: 13px;
-                font-weight: 500;
-                color: #7F848F;
-                padding-top: 9px;
-            }
-
-            &-bottom {
-                font-size: 25px;
-                font-weight: bold;
-                color: #333B4C;
-                >span {
-                    font-size: 13px;
-                }
-
-                &.one-bottom {
-                    color: #EE4034;
-                }
-            }
-        }
+    .project-btn {
+      width: 73px;
+      height: 29px;
+      background: linear-gradient(0deg, #F8564C 0%, #FF776E 100%);
+      border-radius: 14px;
+      font-size: 11px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
 
-    .project-progress-warp {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 19px 17px;
-        .project-progress-box {
-            flex: 1;
-            height: 8px;
-            border-radius: 4px;
-            border: 1px solid #033FFF;
-            background-color: #fff;
+  .project-tag-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
 
-            .project-progress {
-                height: 6px;
-                border-radius: 4px;
-                background-color: #023EFE;
-            }
-        }
-        .progress-value {
-            width: auto;
-            font-size: 12px;
-            font-weight: 500;
-            color: #023EFE;
-            padding-left: 12px;
-        }
+    .project-tag-item {
+      border: 1px solid #FB6501;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 400;
+      color: #F98A0B;
+      margin-left: 4px;
+
+      &:first-child {
+        margin-left: 0%;
+      }
     }
+  }
 
-    .project-footer {
-        padding: 0 19px 16px;
-        .project-btn-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+  .project-info-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 13px;
 
-            .project-size {
-                font-size: 13px;
-                font-weight: 500;
-                color: #3E3E3E;
-                > span {
-                    color: #023EFE;
-                }
-            }
+    &-item {
+      &-top {
+        font-size: 13px;
+        font-weight: 500;
+        color: #7f848f;
+        padding-top: 9px;
+      }
 
-            .project-btn {
-                width: 103px;
-                height: 29px;
-                background: #023EFE;
-                border-radius: 15px;
-                line-height: 29px;
-                text-align: center;
-                font-size: 13px;
-                font-weight: 400;
-                color: #FFFFFF;
-            }
+      &-bottom {
+        font-size: 25px;
+        font-weight: bold;
+        color: #333b4c;
+        > span {
+          font-size: 13px;
         }
+
+        &.one-bottom {
+          color: rgba(251, 101, 1, 1);
+        }
+      }
     }
+  }
+
+  .project-progress-warp {
+    margin-top: 13px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .project-progress-box {
+      flex: 1;
+      height: 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(251, 118, 62, 1);;
+      background-color: #fff;
+
+      .project-progress {
+        height: 6px;
+        border-radius: 5px;
+        background-color: rgba(251, 118, 62, 1);;
+      }
+    }
+    .progress-value {
+      width: auto;
+      font-size: 12px;
+      font-weight: 500;
+      color: #F8F9FB;;
+      padding-left: 12px;
+    }
+  }
 }
 </style>
