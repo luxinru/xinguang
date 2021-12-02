@@ -5,7 +5,6 @@
       <div class="header-cont-text">当前积分</div>
     </div>
     <div class="task-list-box">
-
       <div class="task-list-item">
         <div class="task-list-item-left">
           <div class="item-icon icon-1"></div>
@@ -19,7 +18,7 @@
           :class="{ 'active-btn': mission.qiandao_status }"
           @click="checkin2()"
         >
-          {{ mission.qiandao_status ? "已完成" : "做任务" }}
+          {{ mission.qiandao_status ? '已完成' : '做任务' }}
         </div>
       </div>
 
@@ -36,7 +35,7 @@
           :class="{ 'active-btn': mission.invest_status == true }"
           @click="handleTaskListItem(1)"
         >
-          {{ mission.invest_status == true ? "已完成" : "做任务" }}
+          {{ mission.invest_status == true ? '已完成' : '做任务' }}
         </div>
       </div>
 
@@ -98,7 +97,7 @@
           :class="{ 'active-btn': mission.auth_status == true }"
           @click="handleTaskListItem(3)"
         >
-          {{ mission.auth_status == true ? "已完成" : "做任务" }}
+          {{ mission.auth_status == true ? '已完成' : '做任务' }}
         </div>
       </div>
 
@@ -126,10 +125,10 @@
           :class="{ 'active-btn': mission.answer_status }"
           @click="handleTaskListItem(7)"
         >
-          {{ mission.answer_status ? "已完成" : "做任务" }}
+          {{ mission.answer_status ? '已完成' : '做任务' }}
         </div>
       </div>
-      
+
       <!--
 				<div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div>
 				<div class="task-list-item">
@@ -182,53 +181,53 @@
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
-import { Dialog } from "vant";
+import Fetch from '../../utils/fetch'
+import { Dialog } from 'vant'
 export default {
-  name: "info",
-  data() {
+  name: 'info',
+  data () {
     return {
       data: {},
-      footer_type: "n1",
+      footer_type: 'n1',
       mission: {},
       signInList: [
-        { id: 1, name: "周一", isSignIn: true },
-        { id: 2, name: "周二", isSignIn: true },
-        { id: 3, name: "周三", isSignIn: true },
-        { id: 4, name: "周四", isSignIn: false },
-        { id: 5, name: "周五", isSignIn: false },
-        { id: 6, name: "周六", isSignIn: false },
-        { id: 7, name: "周日", isSignIn: false },
-      ],
-    };
+        { id: 1, name: '周一', isSignIn: true },
+        { id: 2, name: '周二', isSignIn: true },
+        { id: 3, name: '周三', isSignIn: true },
+        { id: 4, name: '周四', isSignIn: false },
+        { id: 5, name: '周五', isSignIn: false },
+        { id: 6, name: '周六', isSignIn: false },
+        { id: 7, name: '周日', isSignIn: false }
+      ]
+    }
   },
-  created() {
+  created () {
     // if (this.$parent.getFooterType() === 'n2') {
     // 	this.$router.replace('/user');
     // }
-    this.$parent.footer(true, "mission");
+    this.$parent.footer(true, 'mission')
 
-    var type = localStorage.getItem("footer");
+    var type = localStorage.getItem('footer')
     if (type) {
-      this.footer_type = type;
+      this.footer_type = type
     }
   },
-  mounted() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    this.start();
+  mounted () {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
+    this.start()
   },
   methods: {
-    dati() {
-      Fetch("/index/getAnswer").then((res) => {
-        this.$router.replace("/exam");
-      });
+    dati () {
+      Fetch('/index/getAnswer').then(res => {
+        this.$router.replace('/exam')
+      })
     },
-    checkin2() {
-      this.$router.push("/qiandao");
+    checkin2 () {
+      this.$router.push('/qiandao')
 
-      return;
-      Fetch("/user/sign").then((res) => {
+      return
+      Fetch('/user/sign').then(res => {
         /* var u = navigator.userAgent;
 					if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
 					  this.sign_money = res.data.reward;
@@ -260,79 +259,79 @@ export default {
 					} */
         if (res.data.coss == 1) {
           Dialog.alert({
-            title: "提示",
+            title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: "去认证",
+            confirmButtonText: '去认证'
           })
             .then(() => {
-              this.$router.push("/auth");
+              this.$router.push('/auth')
             })
-            .catch(() => {});
+            .catch(() => {})
         } else {
-          this.sign_money = res.data.reward;
-          this.new_sign_ok = true;
+          this.sign_money = res.data.reward
+          this.new_sign_ok = true
           this.$notify({
-            background: "#07c160",
-            message: "签到成功：已获得现金2元和8积分！",
-          });
+            background: '#07c160',
+            message: '签到成功：已获得现金2元和8积分！'
+          })
         }
-      });
+      })
     },
-    start() {
+    start () {
       setTimeout(() => {
-        var element = document.getElementById("app");
-        element.scrollIntoView();
-      }, 0);
-      Fetch("/user/info").then((res) => {
-        this.data = res.data;
-      });
+        var element = document.getElementById('app')
+        element.scrollIntoView()
+      }, 0)
+      Fetch('/user/info').then(res => {
+        this.data = res.data
+      })
 
-      Fetch("/index/getStstusAll").then((res) => {
-        this.mission = res.data;
-        console.log(this.mission);
-      });
+      Fetch('/index/getStstusAll').then(res => {
+        this.mission = res.data
+        console.log(this.mission)
+      })
     },
-    logout() {
-      this.$parent.setFooterType("n1");
-      localStorage.removeItem("token");
-      this.$router.replace("/login");
+    logout () {
+      this.$parent.setFooterType('n1')
+      localStorage.removeItem('token')
+      this.$router.replace('/login')
     },
-    handleTaskListItem(type = 1) {
+    handleTaskListItem (type = 1) {
       switch (type) {
         case 1:
           if (this.mission && this.mission.invest_status == false) {
-            this.$router.push({ name: "share" });
+            this.$router.push({ name: 'share' })
           }
-          break;
+          break
         case 2:
           if (this.mission && this.mission.yue_bao_status == false) {
-            this.$router.push({ name: "baoku" });
+            this.$router.push({ name: 'baoku' })
           }
-          break;
+          break
         case 3:
           if (this.mission && this.mission.auth_status == false) {
-            this.$router.push({ name: "auth" });
+            this.$router.push({ name: 'auth' })
           }
-          break;
+          break
         case 4:
-          this.$router.push({ name: "item" });
-          break;
+          this.$router.push({ name: 'item' })
+          break
         case 5:
-          this.$router.push({ name: "start" });
-          break;
+          this.$router.push({ name: 'start' })
+          break
         case 6:
-          this.$router.push({ name: "sport_event" });
-          break;
+          this.$router.push({ name: 'sport_event' })
+          break
         case 7:
           // this.$router.push({name: 'question_type'});
-          this.$router.push({ name: "wenjuan" });
+          this.$router.push({ name: 'wenjuan' })
 
-          break;
+          break
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 <style>
 #app {
@@ -340,5 +339,5 @@ export default {
 }
 </style>
 <style lang="less" scoped>
-@import "mission";
+@import 'mission';
 </style>

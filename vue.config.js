@@ -1,29 +1,31 @@
-const Version = new Date().getTime();
+const Version = new Date().getTime()
 module.exports = {
-// webpackÅäÖÃ 
-  chainWebpack: () => { },
-  configureWebpack:  {  
+  // webpackï¿½ï¿½ï¿½ï¿½
+  chainWebpack: () => {},
+  configureWebpack: {
     output: {
       filename: `js/[name].js?t=${Version}`,
-      chunkFilename:`js/[name].${Version}.js`
+      chunkFilename: `js/[name].${Version}.js`
     }
-  
   },
-  // cssÏà¹ØÅäÖÃ
+  // cssï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   css: {
-    // ÊÇ·ñÊ¹ÓÃcss·ÖÀë²å¼ş ExtractTextPlugin
-    extract: { 
-    filename:`css/[name].css?t=${Version}`,
-    chunkFilename:`css/[name].${Version}.css`
+    // ï¿½Ç·ï¿½Ê¹ï¿½ï¿½cssï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ExtractTextPlugin
+    extract: {
+      filename: `css/[name].css?t=${Version}`,
+      chunkFilename: `css/[name].${Version}.css`
     },
-    // ¿ªÆô CSS source maps?
+    // ï¿½ï¿½ï¿½ï¿½ CSS source maps?
     sourceMap: false,
-    // cssÔ¤ÉèÆ÷ÅäÖÃÏî
+    // cssÔ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     loaderOptions: {},
-    // ÆôÓÃ CSS modules for all css / pre-processor files.
-    modules: false,
+    // ï¿½ï¿½ï¿½ï¿½ CSS modules for all css / pre-processor files.
+    modules: false
   },
   lintOnSave: false,
   productionSourceMap: false,
-  publicPath: './'
+  publicPath: './',
+  devServer: {
+    port: 8888 // ç«¯å£å·
+  }
 }

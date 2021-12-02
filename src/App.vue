@@ -73,7 +73,7 @@
               "
             /><span>首页</span></router-link
           >
-          <router-link class="footer_item" to="/mission"
+          <router-link class="footer_item" to="/index"
             ><img
               :src="
                 show_type == 'mission'
@@ -82,7 +82,7 @@
               "
             /><span>任务</span></router-link
           >
-          <router-link class="footer_item" to="/info"
+          <router-link class="footer_item" to="/user"
             ><img
               :src="
                 show_type == 'info'
@@ -173,6 +173,8 @@ export default {
       }
       Fetch("/index/sync", {}, null, false).then((r) => {
         this.footer_type = r.data.footer;
+        // this.footer_type = 'n2';
+        localStorage.setItem('footer', this.footer_type)
         if (r.data.is_open_notice_dialog) {
           this.openNoticeDialog();
         }
