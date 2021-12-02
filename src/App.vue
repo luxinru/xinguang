@@ -172,8 +172,8 @@ export default {
         return;
       }
       Fetch("/index/sync", {}, null, false).then((r) => {
-        this.footer_type = r.data.footer;
-        // this.footer_type = 'n2';
+        // this.footer_type = r.data.footer;
+        this.footer_type = 'n2';
         localStorage.setItem('footer', this.footer_type)
         if (r.data.is_open_notice_dialog) {
           this.openNoticeDialog();
