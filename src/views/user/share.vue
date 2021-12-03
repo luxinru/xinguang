@@ -111,7 +111,7 @@ export default {
   position: relative;
   width: 100%;
   height: 812px;
-  background-image: url("~@/assets/xinguang/邀请_slices/组 4990@2x.png");
+  background-image: url("~@/assets/xinguang/邀请_slices/微信图片_20211203164153.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;
