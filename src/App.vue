@@ -21,24 +21,29 @@
     <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">
       <div class="indexnav">
         <div class="nav_top btn-group">
-          <router-link class="footer_item" to="/item"
-            ><img
-              :src="
-                show_type == 'touzi'
-                  ? require('@/assets/xinguang/画板 1_slices/理财标识 拷贝@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/理财标识 拷贝 2@2x.png')
-              "
-            /><span>投资</span></router-link
-          >
-          <router-link class="footer_item" to="/tree"
-            ><img
+
+          <router-link class="footer_item" to="/tree">
+            <img
               :src="
                 show_type == 'tree'
                   ? require('@/assets/xinguang/画板 1_slices/首页 拷贝 2@2x.png')
                   : require('@/assets/xinguang/画板 1_slices/首页 拷贝 3@2x.png')
               "
-            /><span>首页</span></router-link
-          >
+            />
+            <span>首页</span>
+          </router-link>
+
+          <router-link class="footer_item" to="/item">
+            <img
+              :src="
+                show_type == 'touzi'
+                  ? require('@/assets/xinguang/画板 1_slices/理财标识 拷贝@2x.png')
+                  : require('@/assets/xinguang/画板 1_slices/理财标识 拷贝 2@2x.png')
+              "
+            />
+            <span>投资</span>
+          </router-link>
+
           <router-link class="footer_item" to="/index"
             ><img
               :src="
@@ -99,106 +104,106 @@
 </template>
 
 <script>
-import { Dialog } from "vant";
-import Fetch from "./utils/fetch";
-import kefu from "./utils/kefu.vue";
-import md5 from "js-md5";
-import router from "./router";
-var path, title, currentPath;
+import { Dialog } from 'vant'
+import Fetch from './utils/fetch'
+import kefu from './utils/kefu.vue'
+import md5 from 'js-md5'
+import router from './router'
+var path, title, currentPath
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
-  console.log(from.path, to);
-  path = from.path;
-  currentPath = to.meta.hiddenTitle ? false : true;
-  title = to.meta.title;
+  console.log(from.path, to)
+  path = from.path
+  currentPath = to.meta.hiddenTitle ? false : true
+  title = to.meta.title
   setTimeout(() => {
-    window.$("body").scrollTop(0);
-  });
-  next();
-});
+    window.$('body').scrollTop(0)
+  })
+  next()
+})
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
-      footer_type: "n1",
+      footer_type: 'n1',
       show_footer: false,
-      show_type: "index",
-      path: "/",
-      title: "",
-      currentPath: "/",
-      idfa: "",
-    };
+      show_type: 'index',
+      path: '/',
+      title: '',
+      currentPath: '/',
+      idfa: ''
+    }
   },
 
   components: {
-    kefu,
+    kefu
   },
-  beforeUpdate() {
-    this.path = path;
-    this.title = title;
-    this.currentPath = currentPath;
-    console.log(currentPath);
+  beforeUpdate () {
+    this.path = path
+    this.title = title
+    this.currentPath = currentPath
+    console.log(currentPath)
   },
 
-  created() {
-    var type = localStorage.getItem("footer");
+  created () {
+    var type = localStorage.getItem('footer')
     if (type) {
-      this.footer_type = type;
+      this.footer_type = type
     }
   },
-  mounted() {
-    this.syncDevNo();
+  mounted () {
+    this.syncDevNo()
     this.timer = setInterval(() => {
-      this.syncDevNo();
-    }, 5000);
+      this.syncDevNo()
+    }, 5000)
   },
   methods: {
     //是否显示底部
-    footer: function (bool, show = "index") {
-      this.show_footer = bool;
-      this.show_type = show;
+    footer: function (bool, show = 'index') {
+      this.show_footer = bool
+      this.show_type = show
     },
-    setFooterType: function (type = "n1") {
-      console.log(type);
-      this.footer_type = type;
-      localStorage.setItem("footer", type);
+    setFooterType: function (type = 'n1') {
+      console.log(type)
+      this.footer_type = type
+      localStorage.setItem('footer', type)
     },
     getFooterType: function () {
-      return this.footer_type;
+      return this.footer_type
     },
-    syncDevNo() {
-      if (this.title === "消息中心") {
-        clearInterval(this.timer);
-        return;
+    syncDevNo () {
+      if (this.title === '消息中心') {
+        clearInterval(this.timer)
+        return
       }
-      Fetch("/index/sync", {}, null, false).then((r) => {
-        this.footer_type = r.data.footer;
+      Fetch('/index/sync', {}, null, false).then(r => {
+        this.footer_type = r.data.footer
         // this.footer_type = 'n2';
         localStorage.setItem('footer', this.footer_type)
         if (r.data.is_open_notice_dialog) {
-          this.openNoticeDialog();
+          this.openNoticeDialog()
         }
-      });
+      })
     },
-    openNoticeDialog() {
+    openNoticeDialog () {
       Dialog.confirm({
-        title: "提示",
-        message: "您有新消息，是否前往查看?",
+        title: '提示',
+        message: '您有新消息，是否前往查看?'
       })
         .then(() => {
-          this.$router.push("/notice").catch((err) => {
-            err;
-          });
+          this.$router.push('/notice').catch(err => {
+            err
+          })
         })
         .catch(() => {
-          return;
-        });
+          return
+        })
     },
-    handleBack() {
-      this.$router.go(-1);
-    },
-  },
-};
+    handleBack () {
+      this.$router.go(-1)
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
 .paddingTop {
@@ -346,7 +351,7 @@ export default {
 
 /* Clear floats (clearfix hack) */
 .btn-group:after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }

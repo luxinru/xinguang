@@ -288,9 +288,9 @@ export default {
       this.category_data = []
       Fetch("/index/goods_list").then((res) => {
         const { category } = res.data
-        category.forEach(item => {
-          this.category_data = this.category_data.concat(item.list)
-        });
+        if (category.length && category[0].list && category[0].list.length) {
+          this.category_data = category[0].list.splice(0, 2)
+        }
 
         for (var i = 0; i < res.data.category.length; i++) {
           this.dh_num.push([]);
