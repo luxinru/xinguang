@@ -32,6 +32,10 @@
         <div class="item-num">{{ data.money }}</div>
         <div class="item-name">账户余额</div>
       </div>
+      <div class="my-user-info-list-item" @click="$router.push('/integral')">
+        <div class="item-num">{{ data.integral }}</div>
+        <div class="item-name">我的积分</div>
+      </div>
       <div class="my-user-info-list-item">
         <div class="item-num">{{ data.ds_money }}</div>
         <div class="item-name">待收本金</div>
@@ -39,10 +43,6 @@
       <div class="my-user-info-list-item">
         <div class="item-num">{{ data.ds_apr_money }}</div>
         <div class="item-name">待收利息</div>
-      </div>
-      <div class="my-user-info-list-item" @click="$router.push('/integral')">
-        <div class="item-num">{{ data.integral }}</div>
-        <div class="item-name">我的积分</div>
       </div>
     </div>
 
