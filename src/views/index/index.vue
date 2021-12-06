@@ -73,7 +73,7 @@
 				-->
       <!-- <div class="task-list-item-bank"><img src="./../../assets/images/qianhai/task/line.png" width=100% /></div> -->
 
-      <div class="task-list-item" v-if="footer_type === 'n1'">
+      <div class="task-list-item" v-if="footer_type === 'n2'">
         <div class="task-list-item-left">
           <div class="item-icon icon-3"></div>
           <div class="item-title-box">
@@ -107,7 +107,7 @@
         </div>
       </div>
 
-      <div class="task-list-item" v-if="footer_type === 'n1'">
+      <div class="task-list-item" v-if="footer_type === 'n2'">
         <div class="task-list-item-left">
           <div class="item-icon icon-5"></div>
           <div class="item-title-box">

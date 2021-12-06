@@ -36,31 +36,31 @@
         <div class="item-num">{{ data.integral }}</div>
         <div class="item-name">我的积分</div>
       </div>
-      <div class="my-user-info-list-item">
+      <div v-if="footerType === 'n2'" class="my-user-info-list-item">
         <div class="item-num">{{ data.ds_money }}</div>
         <div class="item-name">待收本金</div>
       </div>
-      <div class="my-user-info-list-item">
+      <div v-if="footerType === 'n2'" class="my-user-info-list-item">
         <div class="item-num">{{ data.ds_apr_money }}</div>
         <div class="item-name">待收利息</div>
       </div>
     </div>
 
-    <div class="my-user-info-bottom">
+    <div v-if="footerType === 'n2'" class="my-user-info-bottom">
       <div class="my-user-info-bottom-btn" @click="handleRecharge">
         <img
           src="~@/assets/xinguang/个人中心改 拷贝_slices/recharge@2x.png"
           alt=""
         />
-        <span>充值</span>
+        <span>账户充值</span>
         <van-icon class="avnicon" name="arrow" size="12" color="#656565" />
       </div>
       <div class="my-user-info-bottom-btn" @click="handleWithdraw">
         <img
-          src="~@/assets/xinguang/个人中心改 拷贝_slices/recharge@2x.png"
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/提现明细@2x.png"
           alt=""
         />
-        <span>提现</span>
+        <span>账户提现</span>
         <van-icon class="avnicon" name="arrow" size="12" color="#656565" />
       </div>
     </div>
@@ -71,7 +71,10 @@
         v-if="footerType === 'n2'"
         @click="handleMyService('invest')"
       >
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/充值缴费 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/充值缴费 拷贝@2x.png"
+          alt=""
+        />
         <div>充值记录</div>
       </div>
 
@@ -80,7 +83,10 @@
         v-if="footerType === 'n2'"
         @click="handleMyService('cost')"
       >
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/提现 (1) 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/提现 (1) 拷贝@2x.png"
+          alt=""
+        />
         <div>提现记录</div>
       </div>
 
@@ -89,57 +95,98 @@
         v-if="footerType === 'n2'"
         @click="handleMyService('touzi')"
       >
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/升级记录 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/升级记录 拷贝@2x.png"
+          alt=""
+        />
         <div>投资记录</div>
       </div>
 
-      <div class="info_item" @click="handleMyService('funds')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/明细4-面型 拷贝@2x.png" alt="">
+      <div
+        class="info_item"
+        v-if="footerType === 'n2'"
+        @click="handleMyService('funds')"
+      >
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/明细4-面型 拷贝@2x.png"
+          alt=""
+        />
         <div>资金明细</div>
       </div>
 
-      <div class="info_item" @click="handleMyService('baoku')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/理财 (1) 拷贝@2x.png" alt="">
+      <div
+        class="info_item"
+        v-if="footerType === 'n2'"
+        @click="handleMyService('baoku')"
+      >
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/理财 (1) 拷贝@2x.png"
+          alt=""
+        />
         <div>我的宝库</div>
       </div>
 
       <div class="info_item" @click="handleMyService('quanbao')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/优惠券 (1) 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/优惠券 (1) 拷贝@2x.png"
+          alt=""
+        />
         <div>我的券包</div>
       </div>
 
       <div class="info_item" @click="handleMyService('notice')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/消息 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/消息 拷贝@2x.png"
+          alt=""
+        />
         <div>站内消息</div>
       </div>
 
       <div class="info_item" @click="handleMyService('share')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/邀请 (2) 拷贝@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/邀请 (2) 拷贝@2x.png"
+          alt=""
+        />
         <div>邀请好友</div>
       </div>
     </div>
 
     <section class="menu_box">
-      <div class="item" @click="handleMyService('about')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/关于我们@2x.png" alt="">
+      <div
+        class="item"
+        v-if="footerType === 'n2'"
+        @click="handleMyService('about')"
+      >
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/关于我们@2x.png"
+          alt=""
+        />
         <span>关于我们</span>
       </div>
       <div class="item" @click="handleMyService('protocol')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/支持多种协议@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/支持多种协议@2x.png"
+          alt=""
+        />
         <span>服务协议</span>
       </div>
       <div class="item" @click="handleMyService('privacy')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/协议@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/协议@2x.png"
+          alt=""
+        />
         <span>隐私协议</span>
       </div>
       <div class="item" @click="handleMyService('account')">
-        <img src="~@/assets/xinguang/个人中心改 拷贝_slices/wxb账户@2x.png" alt="">
+        <img
+          src="~@/assets/xinguang/个人中心改 拷贝_slices/wxb账户@2x.png"
+          alt=""
+        />
         <span>账户信息</span>
       </div>
     </section>
 
     <div class="log-out" @click="logout">退出登录</div>
-
   </div>
 </template>
 
