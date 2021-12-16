@@ -2,6 +2,7 @@
   <div class="project-item-container">
     <div class="project-img-box">
       <img :src="investInfo.thumb" alt="" />
+      <div class="qx">产品期限：{{ investInfo.day }}天</div>
       <div class="project-size">
         项目规模：<span>{{ investInfo.total }}万元</span>
       </div>
@@ -112,6 +113,22 @@ export default {
       color: #121c32;
       background: rgba(252, 219, 180, 1);
       border-radius: 40% 40% 0 0;
+    }
+
+    .qx {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 127px;
+      height: 29px;
+      background: url('~@/assets/xinguang/矩形743@2x.png') no-repeat;
+      background-size: cover;
+      font-size: 11px;
+      font-weight: 400;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   .project-item-header {
