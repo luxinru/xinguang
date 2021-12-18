@@ -221,13 +221,13 @@ export default {
           flex-shrink: 0;
         }
         .info-form-item-right {
+          flex: 1 0;
           display: flex;
           align-items: center;
           justify-content: space-between;
           font-size: 15px;
           font-weight: 400;
           color: #000000;
-          width: 100%;
           .copy-cont {
             display: flex;
             align-items: center;
