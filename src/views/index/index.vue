@@ -95,7 +95,7 @@
           <div class="item-icon icon-4"></div>
           <div class="item-title-box">
             <div class="item-title">新人认证</div>
-            <div class="item-sub-title">领取5元红包</div>
+            <div class="item-sub-title">领取5.88元红包</div>
           </div>
         </div>
         <div

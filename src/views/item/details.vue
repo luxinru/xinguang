@@ -124,6 +124,10 @@
           <div class="project-investment-info-item-right">{{ data.time }}</div>
         </div>
         <div class="project-investment-info-item">
+          <div class="project-investment-info-item-left">到期日期</div>
+          <div class="project-investment-info-item-right">{{ data.out_time }}</div>
+        </div>
+        <div class="project-investment-info-item">
           <div class="project-investment-info-item-left">收益计算</div>
           <div class="project-investment-info-item-right" v-if="data.type != 7">
             每日分红{{ data.apr_money }}元*{{ data.day }}天=总收益{{

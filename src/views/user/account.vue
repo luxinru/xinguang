@@ -51,16 +51,15 @@
           <div><van-icon name="arrow" size="16" color="#C3C3C6" /></div>
         </div>
       </div>
-      <div class="account-security-item" @click="handleGoCertifications">
+      <!-- <div class="account-security-item" @click="handleGoCertifications">
         <div class="account-security-item-left">
-          <!-- <img src="./images/name-icon.png" /> -->
           <span>注销账号</span>
         </div>
         <div class="account-security-item-right">
           <div></div>
           <div><van-icon name="arrow" size="16" color="#C3C3C6" /></div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@
         <div class="project-name">
           {{ item.apr_plan[0].title }}
           <div class="project-tag-box">
-            <div class="project-tag">每日复利、保本保息</div>
+            <div class="project-tag">{{item.type_name}}</div>
             <van-icon
               name="arrow"
               size="16"

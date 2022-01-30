@@ -1,44 +1,8 @@
 <template>
   <div class="page">
     <img src="@/views/user/images/sf/back.png" class="back" @click="$router.back()" />
-    <!-- <div class="header">
-            <div class="head">
-                <router-link to="/user" class="back"></router-link>
-                邀请好友
-            </div>
-        </div>
-        <div class="top">
-            <div class="avator_box">
-                <div class="avatar" v-bind:style="{'background-image':'url(' + data.avatar + ')'}"></div>
-                <div class="invite_btn" @click="showShare">点击获取邀请二维码</div>
-            </div>
-        </div>
-        <div class="main">
-            <span class="my_invite">我推荐的会员</span>
-            <div class="content">
-                <div class="item clearfix">
-                    <div class="left title">推广会员</div>
-                    <div class="right title">注册时间</div>
-                </div>
-                <div class="item clearfix" v-for="(item, key) in data.share_user" :key="key">
-                    <div class="left 1">{{item.phone}}</div>
-                    <div class="right">{{item.time}}</div>
-                </div>
-            </div>
 
-        </div>
-        <div class="qrcode_box" v-if="is_show_share">
-            <div class="qrcode" :style="'background-image: url(' + data.share_image_url + ')'"></div>
-            <p class="qrcode_info">好友扫描以上专属二维码可直接注册</p>
-            <button type="button" class="qrcode_btn" @click="close">我知道啦</button>
-        </div>
-        <div class="mask_c" v-if="is_show_share"></div> -->
-
-    <!-- <img src="../../assets/icons/back_white.svg" @click="$router.back()" class="back"> -->
-    <!-- <img src="../../assets/share/share.jpg" width="100%"> -->
-
-    <div class="main-cont">
-      <!-- <p class="my_invite">我的邀请</p> -->
+    <!-- <div class="main-cont">
       <div class="title">
         <div class="left">推广会员</div>
         <div class="right">注册时间</div>
@@ -59,14 +23,7 @@
         <p class="qrcode_tips">好友扫描以上专属二维码<br />可直接注册</p>
         <div class="qrcode_btn" @click="close">确定</div>
       </div>
-    </div>
-
-    <!-- <div class="qrcode_box" v-if="is_show_share">
-            <div class="qrcode" :style="'background-image: url(' + data.share_image_url + ')'"></div>
-            <p class="qrcode_info">好友扫描以上专属二维码可直接注册</p>
-            <button type="button" class="qrcode_btn" @click="close">我知道啦</button>
-        </div>
-        <div class="mask_c" v-if="is_show_share"></div> -->
+    </div> -->
   </div>
 </template>
 
@@ -110,9 +67,9 @@ export default {
 .page {
   position: relative;
   width: 100%;
-  height: 812px;
-  background-image: url("~@/assets/xinguang/邀请_slices/微信图片_20211203164153.jpg");
-  background-size: 100% 100%;
+  background-image: url("~@/assets/xinguang/photo_2022-01-28_13-05-27.jpg");
+  background-size: cover;
+  height: -webkit-fill-available;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;

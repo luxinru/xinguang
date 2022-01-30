@@ -58,9 +58,9 @@
     <div class="captcha" id="captcha" v-show="!showCaptcha"></div>
 
     <div class="login-footer">
-      <div class="imgs">
+      <div class="imgs" @click="isTrue = !isTrue">
         <img src="@/assets/xinguang/登录_slices/椭圆 1@2x.png" alt="" />
-        <img src="@/assets/xinguang/登录_slices/勾 (1)@2x.png" alt="" />
+        <img v-if="isTrue" src="@/assets/xinguang/登录_slices/勾 (1)@2x.png" alt="" />
       </div>
 
       <div>我已阅读并接受</div>
@@ -108,6 +108,7 @@ export default {
   components: {},
   data() {
     return {
+      isTrue: false,
       data: {
         telAddress: "中国大陆（+86）",
         username: "",
@@ -134,6 +135,12 @@ export default {
     this.set_ALY_config().then((res) => {
       this.get_ALY_file();
     });
+
+    Fetch('/index/webconfig', {
+					type: 'web'
+				}).then(res => {
+					this.config = res.data
+				})
   },
   mounted() {
     window.returnIosIdfa = this.returnIosIdfa;
@@ -237,6 +244,11 @@ export default {
 
     handleSubmit() {
       // this.aa();
+
+      if (!this.isTrue) {
+        this.$notify("请同意用户协议和隐私政策");
+        return;
+      }
 
       if (!this.data.username) {
         this.$notify("请输入您的手机号");
